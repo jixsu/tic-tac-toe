@@ -7,32 +7,48 @@ export function determineWinner(
     return stringArray.map((node) => parseInt(node));
   });
   console.log(mappedArray);
-  let appearances: any = [
+  let counter = [
+    [0, 0, 0],
     [0, 0, 0],
     [0, 0, 0],
   ];
   for (const node of mappedArray) {
-    // console.log(appearances[0][2]);
-    appearances[0][node[0]] += 1;
-    appearances[1][node[1]] += 1;
-    console.log(appearances);
-    if (checkWinCondition(appearances, node) === true) {
+    counter[node[0]][node[1]] = 1;
+  }
+  const nonDiagonalWin = checkNonDiagonalWin(counter);
+  const diagonalWin = checkDiagonalWin(counter);
+
+  if (nonDiagonalWin || diagonalWin) {
+    return true;
+  }
+  return false;
+}
+
+function checkNonDiagonalWin(counter: Array<Array<number>>) {
+  for (let x = 0; x < 3; x++) {
+    let rowWin = true;
+    let columnWin = true;
+    for (let y = 0; y < 3; y++) {
+      if (counter[x][y] !== 1) {
+        rowWin = false;
+      }
+      if (counter[y][x] !== 1) {
+        columnWin = false;
+      }
+    }
+    if (rowWin || columnWin) {
       return true;
     }
   }
   return false;
 }
 
-function checkWinCondition(appearances: any, node: Array<number>) {
-  if (appearances[0][node[0]] === 3 || appearances[1][node[1]] === 3) {
+function checkDiagonalWin(counter: Array<Array<number>>) {
+  if (
+    (counter[0][0] && counter[1][1] && counter[2][2]) ||
+    (counter[0][2] && counter[1][1] && counter[2][0])
+  ) {
     return true;
   }
-  for (const element of appearances) {
-    for (const subElement of element) {
-      if (subElement === 0) {
-        return false;
-      }
-    }
-  }
-  return true;
+  return false;
 }
