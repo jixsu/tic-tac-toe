@@ -1,0 +1,7 @@
+.grid-node {
+  border: 2px solid skyblue;
+  width: 150px;
+  height: 150px;
+  font-size: 90px;
+  text-align: center;
+}

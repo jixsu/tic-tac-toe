@@ -1,0 +1,58 @@
+.y-container {
+  display: flex;
+  width: 100vw;
+  flex-direction: column;
+}
+
+.x-container {
+  margin-top: 10px;
+  margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.title {
+  margin: auto;
+  font-size: 80px;
+}
+
+.score {
+  font-size: 20px;
+  margin: auto;
+}
+
+.player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.player-header {
+  font-size: 80px;
+}
+
+.player-score {
+  margin-top: 20px;
+  font-size: 40px;
+}
+
+.separator {
+  border-top: 1px solid skyblue;
+  width: 3em;
+}
+
+.grid {
+  width: 450px;
+  height: 450px;
+  border: 3px solid white;
+}
+
+.start {
+  margin: auto;
+}
+
+.win-text {
+  margin: auto;
+  font-size: 30px;
+}
